@@ -14,4 +14,5 @@
 // THEN the current day is displayed at the top of the calendar
 var todayDate = moment().format('MMMM Do YYYY, h:mm:ss a');
 $("#currentDay").html(todayDate);
+console.log(todayDate)
 
