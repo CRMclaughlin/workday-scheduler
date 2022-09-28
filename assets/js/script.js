@@ -6,6 +6,14 @@ var today = moment();
 var todayDate = moment().format('dddd, MMMM Do ');
 $("#currentDay").text(todayDate);
 
+// When user clicks the save button the information is saved to local storage
+$('.saveBtn').on('click', function() {
+    var text = $(this).siblings('.description').val().trim();
+    var columnId = $(this).parent().prop('id');
+
+    localStorage.setItem(columnId, text);
+});
+
 
 
 //Function that changes the colors of the calender in corespondence with the time.
@@ -15,6 +23,7 @@ function workdayTimes(){
     // runs a check for each time-block
     $('.time-block').each(function() {
         var timeNow = parseInt($(this).prop('id').split('hour')[1]);
+        
         
         //if timeNow is less then current hour add class "past"
         if (timeNow < currentHour) {
@@ -37,10 +46,10 @@ function workdayTimes(){
 
 workdayTimes();
 
-// WHEN I click into a timeblock
-// THEN I can enter an event
-// WHEN I click the save button for that timeblock
-// THEN the text for that event is saved in local storage
+
+
+
+
 // WHEN I refresh the page
 // THEN the saved events persist
 
