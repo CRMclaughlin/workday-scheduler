@@ -1,7 +1,3 @@
-var hourNow = parseInt(moment().format('H'));
-var today = moment();
-
-
 //Displays today's date in the top of the browser
 var todayDate = moment().format('dddd, MMMM Do ');
 $("#currentDay").text(todayDate);
@@ -9,16 +5,28 @@ $("#currentDay").text(todayDate);
 // When user clicks the save button the information is saved to local storage
 $('.saveBtn').on('click', function() {
     var text = $(this).siblings('.description').val().trim();
-    var columnId = $(this).parent().prop('id');
+    var rowId = $(this).parent().prop('id');
 
-    localStorage.setItem(columnId, text);
+    localStorage.setItem(rowId, text);
 });
+
+// Get item from local storage so event remains even after refresh
+$('#hour8 .description').val(localStorage.getItem('hour8'));
+$('#hour9 .description').val(localStorage.getItem('hour9'));
+$('#hour10 .description').val(localStorage.getItem('hour10'));
+$('#hour11 .description').val(localStorage.getItem('hour11'));
+$('#hour12 .description').val(localStorage.getItem('hour12'));
+$('#hour13 .description').val(localStorage.getItem('hour13'));
+$('#hour14 .description').val(localStorage.getItem('hour14'));
+$('#hour15 .description').val(localStorage.getItem('hour15'));
+$('#hour16 .description').val(localStorage.getItem('hour16'));
+
 
 
 
 //Function that changes the colors of the calender in corespondence with the time.
 function workdayTimes(){
-    var currentHour = today.hours()
+    var currentHour = moment().format('H')
     
     // runs a check for each time-block
     $('.time-block').each(function() {
@@ -45,13 +53,3 @@ function workdayTimes(){
 }
 
 workdayTimes();
-
-
-
-
-
-// WHEN I refresh the page
-// THEN the saved events persist
-
-
-
