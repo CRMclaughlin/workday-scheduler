@@ -1,55 +1,41 @@
 var hourNow = parseInt(moment().format('H'));
-var workHours = ["hour8","hour9", "hour10", "hour11", "hour12", "hour13", "hour14", "hour15", "hour16"]
-var time = [8,9,10,11,12,13,14,15,16]
-console.log()
+var today = moment();
 
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
-var todayDate = moment().format('dddd, MMMM D, YYYY');
-$("#currentDay").html(todayDate);
+
+//Displays today's date in the top of the browser
+var todayDate = moment().format('dddd, MMMM Do ');
+$("#currentDay").text(todayDate);
 
 
 
-
-// WHEN I view the timeblocks for that day
-// THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-if (hourNow < 8) {
-    showFuture();
-}
-else if (hourNow > 16) {
-    showPast();
-}
-else {
-    formatTimes()
-}
-
-function showFuture() {
-    for (i = 0; i < workHours.length; i++) {
-        $(workHours[i]).addClass("future");
-    }
-    $(workHours[0]).addClass("present");
-}
-
-function showPast() {
-    for (i = 0; i < workHours.length - 1; i++) {
-        $(workHours[i]).addClass("past");
-    }
-    $(workHours[time.length - 1]).addClass("present");
+//Function that changes the colors of the calender in corespondence with the time.
+function workdayTimes(){
+    var currentHour = today.hours()
+    
+    // runs a check for each time-block
+    $('.time-block').each(function() {
+        var timeNow = parseInt($(this).prop('id').split('hour')[1]);
+        
+        //if timeNow is less then current hour add class "past"
+        if (timeNow < currentHour) {
+            $(this).addClass('past');
+          } 
+          //else if time now is equal to current hour add class "present"
+          else if (timeNow === currentHour) {
+            $(this).removeClass('past');
+            $(this).removeClass('future');
+            $(this).addClass('present');
+          } 
+          //else add class "future"
+          else {
+            $(this).removeClass('past');
+            $(this).removeClass('present');
+            $(this).addClass('future');
+          }
+    })
 }
 
-function formatTimes() {
-    $(classes[classIndex]).addClass("present");
-    for (i = 0; i < classIndex; i++) {
-        $(workHours[i]).addClass("past");
-    }
-    for (i = classIndex + 1; i < workHours.length; i++) {
-        $(workHours[i]).addClass("future");
-    }
-}
-
-
-
-
+workdayTimes();
 
 // WHEN I click into a timeblock
 // THEN I can enter an event
