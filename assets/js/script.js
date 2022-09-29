@@ -5,6 +5,7 @@ $("#currentDay").text(todayDate);
 // When user clicks the save button the information is saved to local storage
 $('.saveBtn').on('click', function() {
     var text = $(this).siblings('.description').val().trim();
+    // Using .prop instead of .attr and found through 👉🏽https://api.jquery.com/prop/
     var rowId = $(this).parent().prop('id');
 
     localStorage.setItem(rowId, text);
