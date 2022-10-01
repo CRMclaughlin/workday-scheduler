@@ -22,4 +22,5 @@ N/A
 
 https://crmclaughlin.github.io/workday-scheduler/
 
-<img width="1512" alt="Screen Shot 2022-09-29 at 6 50 23 PM" src="https://user-images.githubusercontent.com/111208223/193161604-fbb6cf50-853b-4be0-978a-8e6e9edaf90f.png">
+
+<img width="1512" alt="Screen Shot 2022-10-01 at 2 24 23 PM" src="https://user-images.githubusercontent.com/111208223/193427141-4dc93c72-0e59-4f7b-9dd8-605db724d073.png">
