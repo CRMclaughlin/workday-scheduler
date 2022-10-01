@@ -39,7 +39,7 @@ function workdayTimes(){
             $(this).addClass('past');
           } 
           //else if time now is equal to current hour add class "present"
-          else if (timeNow === currentHour) {
+          else if (timeNow == currentHour) {
             $(this).removeClass('past');
             $(this).removeClass('future');
             $(this).addClass('present');
